@@ -22,6 +22,9 @@ int main(int argc, const char * argv[]) {
     string enter;
     cout << "Hello,You have just entered a magical dungeon. There are beasts hiding around each corner. You must survive alone with nothing. You can find things on the floor or in chests that may help you. Beware the dangers that await you as you embark on your adventure through this dungeon.\n";
     cout << "\n You look to the left and you look to the right.\n To your left is a long narrow hallway.\n To your right is a large empty room except a small box that is lying in the center of the room.\n Do you choose to go right or left?\n";
+   
+while (location != "Quit"){
+    
     cin >> location;
     if (location == "right"){
         {cout << "Do you wish to open the chest?\n";
@@ -61,7 +64,7 @@ int main(int argc, const char * argv[]) {
                 cin >> enter;
             }
                 if (enter == "no"){
-                    cout << "Do you wish to go back t spawn?\n";
+                    cout << "Do you wish to go back to spawn?\n";
                     cin >> spawn;
                 }
                     if (spawn == "yes"){
@@ -69,7 +72,7 @@ int main(int argc, const char * argv[]) {
                         cin >> location;
                     }
                     else if (spawn == "no")
-                        cout << "Well then where do ou want to go. You don't want to go into the secret room and you don't want to explore. Fine here's a staircase good bye!\n";
+                        cout << "Well then where do you want to go. You don't want to go into the secret room and you don't want to explore. Fine here's a staircase good bye!\n";
                         return 0;
                     }
              if (enter == "yes"){
@@ -103,7 +106,7 @@ int main(int argc, const char * argv[]) {
             { cout << "Your poor desicions have showed you your doom. Since you have no where to run the beast runs after you and eats your head. Good Bye and thanks for playing!\n";
             }
             else if (spawn == "yes")
-                { cout << "Do you wish to go to the room to your right of the hallway to your left that you just came from?\n";
+                { cout << "Do you wish to go to the room to your right or the hallway to your left that you just came from?\n";
                 cin >> location;
                 }
                 if (location == "yes")
@@ -112,5 +115,6 @@ int main(int argc, const char * argv[]) {
                 }
                  }
      }
+}
     return 0;
 }
