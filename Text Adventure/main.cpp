@@ -83,7 +83,7 @@ int main(int argc, const char * argv[]) {
         cin >> approach;
     }
         if (approach == "yes")
-        {cout << "You see and injured beast wimpering for help. Do you wish to help it?\n";
+        {cout << "You see an injured beast wimpering for help. Do you wish to help it?\n";
             cin >> help;
         }
             
