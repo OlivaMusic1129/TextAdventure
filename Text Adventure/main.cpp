@@ -91,8 +91,18 @@ while (location != "Quit"){
         }
             
             if (help == "yes")
-            {cout << "The beast turn toawrds you and u see a throne stuck in its paw. After pulling the throne out He thanks you and hand you a gem with a symble engraved on it as a gift.\n";
+            {cout << "The beast turn toawrds you and u see a throne stuck in its paw. After pulling the throne out He thanks you and hand you a gem with a symble engraved on it as a gift.\n Do you wish to go forward or move back to spawn?\n";
+            cin >> location;
                 }
+                 if (location == "Forward") {
+                     cout << "The giant thorne you pulled from the moster's paw was from a bush. That gaint throne bush is behind the beast.\n You are impaled by a giant thorne and die.\n Thank you for playing!\n";
+                     return 0;
+                 }
+                 else if (location == "spawn") {
+                     cout << "Do you wish to go to you right or to your left?";
+                     cin >> location;
+                 }
+                     
             else if (help == "no")
                 {cout << "You frighten the beast and it turns around to attack you. Since you have nothing to fend it off you are struck down and your hp drops to 0. Good bye you selfish monster.\n";
                     return 0;
