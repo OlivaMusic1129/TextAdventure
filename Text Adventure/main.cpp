@@ -32,7 +32,7 @@ while (choice != "Quit"){
     if (choice == "right")
     {
         location = "right";
-        
+    }
     
     
         if (location == "right")
@@ -115,14 +115,15 @@ while (choice != "Quit"){
                         }
                     }
             }
-     }
+     
 
     
         else if (choice == "left")
         {
             location = "left";
-    
-            if (location == "left"){{
+        }
+          
+            if (location == "left")
             {
                 cout << "A large figure lurks in the dark do you wish to apporach it?\n";
                 cin >> approach;
@@ -185,9 +186,7 @@ while (choice != "Quit"){
                     cin >> choice;
                 }
             }
-        }
-    }
-}
+    
 
     return 0;
 }
