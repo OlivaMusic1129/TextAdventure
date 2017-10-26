@@ -13,17 +13,16 @@ int main(int argc, const char * argv[]) {
    
    
     string location;
-    string open;
-    string dig;
-    string unlock;
     string spawn;
     string left;
-    string approach;
-    string help;
-    string enter;
     string choice;
-    cout << "Hello,You have just entered a magical dungeon. There are beasts hiding around each corner. You must survive alone with nothing. You can find things on the floor or in chests that may help you. Beware the dangers that await you as you embark on your adventure through this dungeon.\n";
-    cout << "\n You look to the left and you look to the right.\n To your left is a long narrow hallway.\n To your right is a large empty room except a small box that is lying in the center of the room.\n Do you choose to go right or left?\n";
+    string forward;
+    string right;
+    string stone = "no";
+    string key = "no";
+    
+cout << "You have just entered a magical dungeon. There are beasts hiding around each corner. You must survive alone with nothing. You can find things on the floor or in chests that may help you. Beware the dangers that await you as you embark on your adventure through this dungeon.\n\n";
+cout << "You look to the left and you look to the right.\nTo your left is a long narrow hallway.\nTo your right is a large empty room except a small box that is lying in the center of the room.\nDo you choose to go right or left?\n";
    
 while (choice != "Quit"){
     
@@ -31,125 +30,163 @@ while (choice != "Quit"){
     
     if (choice == "right")
     {
-        location = "right";
+        location = right;
+    }
+    else if (choice == "left")
+    {
+        location = "left";
     }
     
-    
-        if (location == "right")
+        if (location == right)
         {
-                cout << "Do you wish to open the chest?\n";
-                cin >> open;
+            cout << "You see a chest in the middle of the room. Do You wish to 'open' the chest or 'leave' the room?\n";
+            cin >> choice;
                 
-            if ( open == "no")
+            if ( choice == "leave")
             {
-                cout << "Your insticts are sharp. would you like to go back to the first entrence?\n";
-                cin >> spawn;
+                cout << "Your insticts are sharp. You can go back to spawn if you like.\n";
+                cin >> choice;
                 
+                if (choice == "spawn")
+                {
+                    location = spawn;
+                }
+                
+                else if ( choice == "no")
+                {
+                    cout << "Sorry you tripped a trap and you were shot by a poison dart. Better luck next time!\n";
+                    return 0;
+                }
             
             
-                if (spawn == "yes")
+                if (location == spawn)
                 {   cout << "Would you like to go left or right?\n";
-                    cin >> location;
+                    cin >> choice;
                 }
             }
         
-            if (open == "yes")
-            {   cout << "A hord of snakes slithers out, but you see something shining under them. Do you wish to dig through the snakes to get the shimmering object?\n";
-                cin >> dig;
-            
-                if (dig == "no")
+            if (choice == "open" && key == "yes")
+            {
+                cout << "You can 'look' around or go back to 'spawn'\n";
+                cin >> choice;
+                
+                if ( choice == "look")
                 {
-                    cout << "You head back to the main room and you see the room you were just in to your right and a long narrow hallway to your left. Do you wish to go right or left?\n";
-                    cin >> location;
+                    cout << "You see a stone on the wall with a key hole in it. Do you wish to 'unlock' the invisible door or go back to 'spawn'?\n";
+                    cin >> choice;
                 }
                 
-                else if (dig == "yes")
-                {   cout << "You find the snakes are not deadly and you pull a key out of the chest. You see a stone on the wall with a key hole in it. Do you wish to unlock the invisible door?\n";
-                    cin >> unlock;
-                    
+                else if (choice == "spawn")
+                {
+                    location = spawn;
                 }
-       
-            
-                    if (unlock == "no")
-                    {
-            
-                        cout << "Would you like to return to spawn?\n";
-                        cin >> spawn;
-                    }
-                        if (spawn == "no")
-                        {
-                            cout << "Your desicions were slow and the trap triggered when entering the room activates. A poison dart shoots you in the neck. You feel hazy and you fall to the ground. Your hp drops to 0. Move faster next time!\n";
-                            return 0;
-                        }
-                        else if (spawn == "yes")
-                        {
-                            cout << "There is a hallway to your left and a room to your right do you wich to go left or right?\n";
-                            cin >> location;
-                        }
             }
-                    else if (unlock == "yes")
-                    {
-                        cout << "The door creeks open and the room infront of you is pitch black. Do you wish to enter?\n";
-                        cin >> enter;
-                    
-                        if (enter == "no")
-                        {
-                            cout << "Do you wish to go back to spawn?\n";
-                            cin >> spawn;
-                        
-                            if (spawn == "yes")
-                            {
-                                cout << "There is a hallway to your left. Do you wish to go left or right?\n";
-                                cin >> location;
-                            }
+            else if (choice == "open" && key == "no")
+            {   cout << "A hord of snakes slithers out, but you see something shining under them. Do you wish to 'dig' through the snakes to get the shimmering object or to 'leaveRoom'?\n";
+                cin >> choice;
             
-                            else if (spawn == "no")
-                            {cout << "Well then where do you want to go. You don't want to go into the secret room and you don't want to explore. Fine here's a staircase good bye!\n";
+                if (choice == "leaveRoom")
+                {
+                    cout << "You head back to the main room and you see the room you were just in to your right and a long narrow hallway to your left. Do you wish to go right or left?\n";
+                    cin >> choice;
+                }
+                
+                else if (choice == "dig")
+                {   cout << "You find the snakes are not deadly and you pull a key out of the chest. You can 'look' around or go back to 'spawn'.\n";
+                    key= "yes";
+                    cin >> choice;
+                }
+                
+                if ( choice == "look")
+                {
+                    cout << "You see a stone on the wall with a key hole in it. Do you wish to 'unlock' the invisible door or go back to 'spawn'?\n";
+                    cin >> choice;
+                }
+                
+                else if (choice == "spawn")
+                {
+                    location = spawn;
+                }
+                
+                    if (key == "no" && choice == "unlock")
+                    {
+                        cout << "You must find the key.\n";
+                        cin >> choice;
+                    }
+                
+                    else if (key == "yes" && choice == "unlock")
+                    {
+                        cout << "The door creeks open and the room infront of you is pitch black. Do you wish to 'enter'?\n";
+                        cin >> choice;
+                    }
+            
+            
+                         if (choice == "no")
+                            {
+                                cout << "Well then where do you want to go. You don't want to go into the secret room and you don't want to explore. Fine here's a staircase good bye!\n";
                                 return 0;
                             }
-                        }
-                     
-                        if (enter == "yes")
-                        {
-                         cout << "The room is dark, but you feel a torch. You light the torch and a wich offers to trade with you. She asks for a special stone that has unique markings on it. Do you wish to trade her the stone for imortality and the exit to the dungeon?";
-                        }
-                    }
             }
-     
+                     
+                        if (choice == "enter")
+                        {
+                         cout << "The room is dark, but you feel a torch. You light the torch and a wich offers to 'trade' with you. She asks for a special stone that has unique markings on it.\n";
+                            cin >> choice;
+                            
+                            if (stone == "yes" && choice == "trade" )
+                            {
+                                cout << "You Win! Thank you for playing! Bye!\n";
+                                return 0;
+                            }
+                            
+                            else
+                            {
+                                cout << "There's something wrong. You are missing something or you chose wrong please try something else.\n";
+                                cin >> choice;
+                            }
+                        
+            
+                        }
+        
+        }
+
+
 
     
-        else if (choice == "left")
-        {
-            location = "left";
-        }
-          
-            if (location == "left")
-            {
-                cout << "A large figure lurks in the dark do you wish to apporach it?\n";
-                cin >> approach;
     
-                if (approach == "yes")
+            else if (location == "left")
+            {
+                cout << "A large figure lurks in the dark do you wish to 'approach' it or 'goBack'?\n";
+                cin >> choice;
+    
+                if (choice== "approach")
                 {
-                    cout << "You see an injured beast wimpering for help. Do you wish to help it?\n";
-                    cin >> help;
+                    cout << "You see an injured beast wimpering for help. Do you wish to 'help' or 'dontHelp'?\n";
+                    cin >> choice;
             
             
-                    if (help == "yes")
+                    if (choice == "dontHelp")
                     {
-                        cout << "The beast turn toawrds you and u see a throne stuck in its paw. After pulling the throne out He thanks you and hand you a gem with a symble engraved on it as a gift.\n Do you wish to go forward or move back to spawn?\n";
+                        cout << "You were to selfish for your own good. The best gets scared and attacks you. After eating your head he licks his lips and rips a throne from his paw. Better luck next time. Good bye.\n";
+                        return 0;
+                    }
+                    
+                    else if (choice== "help")
+                    {
+                        cout << "The beast turns toawrds you and you see a throne stuck in its paw. After pulling the throne out He thanks you and hand you a gem with a symble engraved on it as a gift.\n Do you wish to go 'forward' or move back to 'spawn'?\n";
+                        stone = "yes";
                         cin >> choice;
                 
                             if (choice == "forward")
                             {
-                                location = "forward";
+                                location = forward;
                             }
-                        
                             else if (choice == "spawn")
                             {
                                 location = "spawn";
                             }
             
-                        if (location == "forward")
+                        if (location == forward)
                         {
                             cout << "The giant thorne you pulled from the moster's paw was from a bush. That gaint throne bush is behind the beast.\n You are impaled by a giant thorne and die.\n Thank you for playing!\n";
                             return 0;
@@ -157,33 +194,32 @@ while (choice != "Quit"){
             
                         else if (location == "spawn")
                         {
-                            cout << "Do you wish to go to you right or to your left?";
+                            cout << "Do you wish to go to you right or to your left?\n";
                             cin >> location;
                         }
                     }
                 }
                 
-                    else if (help == "no")
+                    else if (choice == "leave")
                     {
                         cout << "You frighten the beast and it turns around to attack you. Since you have nothing to fend it off you are struck down and your hp drops to 0. Good bye you selfish monster.\n";
                         return 0;
                     }
                 }
             }
-            if (approach == "no")
+            if (choice == "goBack")
             {
                 cout << "The beast is in the way and you can't go around it without disturbing it. Do you wish to go back to the spawn?\n";
-                cin >> spawn;
+                cin >> choice;
             
     
-                if (spawn == "no")
+                if (choice == "no")
                 {
                     cout << "Your poor desicions have showed you your doom. Since you have no where to run the beast runs after you and eats your head. Good Bye and thanks for playing!\n";
                 }
-                else if (spawn == "yes")
+                else if (choice == "spawn")
                 {
-                    cout << "Do you wish to go to the room to your right or the hallway to your left that you just came from?\n";
-                    cin >> choice;
+                    location = "spawn";
                 }
             }
     
