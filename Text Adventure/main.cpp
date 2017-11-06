@@ -24,11 +24,14 @@ int main(int argc, const char * argv[]) {
 cout << "You have just entered a magical dungeon. There are beasts hiding around each corner. You must survive alone with nothing. You can find things on the floor or in chests that may help you. Beware the dangers that await you as you embark on your adventure through this dungeon.\n\n";
 cout << "You look to the left and you look to the right.\nTo your left is a long narrow hallway.\nTo your right is a large empty room except a small box that is lying in the center of the room.\nDo you choose to go right or left?\n";
    
+    // You should probably start the player in spawn, or just rename spawn.
+    // instructions would be cool to have as well
+    
 while (choice != "Quit"){
     
     cin >> choice;
     
-    if (choice == "right")
+    if (choice == "right") // Left and right should probably be choices in that could be chosen at a location
     {
         location = right;
     }
@@ -57,14 +60,48 @@ while (choice != "Quit"){
                     cout << "Sorry you tripped a trap and you were shot by a poison dart. Better luck next time!\n";
                     return 0;
                 }
-            
-            
-                if (location == spawn)
-                {   cout << "Would you like to go left or right?\n";
-                    cin >> choice;
-                }
             }
         
+        if (location == "spawn")
+            {
+                cout << "Would you like to go left, right, or down the steps?\n"; // I changed this line, giving the player the option to go down the stairs
+                cin >> choice;
+                if (choice == "down")
+                {
+                    location = "downstairs";
+                }
+            }
+            
+        else if (location == "downstairs")
+        {
+            cout << "You went downstairs. It is very wet and damp. You hear something in the distance. Would you like to investigate it? \n";
+            cin >> choice;
+            if (choice == "yes")
+            {
+                cout << "You come across a large monster. Would you like to run or attack? \n";
+                cin >> choice;
+                if (choice == "run")
+                {
+                    cout << "you ran away \n";
+                    location = "spawn";
+                }
+                else if (choice == "attack") // They are killed everytime if they choose to attack the monster. You could change any of this if you want.
+                {
+                    cout << "You were killed. \n";
+                    return 0;
+                }
+                else if (choice == "look")
+                {
+                    cout << "You have found nothing. Due to your slow actions, the bear attacked and killed you. \n";
+                    return 0;
+                }
+            }
+            else if (choice == "no")
+            {
+                location = "spawn";
+            }
+        }
+            
             if (choice == "open" && key == "yes")
             {
                 cout << "You can 'look' around or go back to 'spawn'\n";
